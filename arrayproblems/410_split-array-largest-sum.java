@@ -1,0 +1,40 @@
+class Solution {
+    public int splitArray(int[] nums, int k) {
+        int start=0;
+        int end=0;
+        for ( int i = 0;i < nums.length; i++)
+        {
+            start=Math.max(start,nums[i]);
+            end+=nums[i];
+        }
+        while( start < end)
+        {
+            int mid = start + (end-start) / 2;
+            int sum=0;
+            int pieces=1; // minimum number of pieces
+
+            for ( int ele : nums)
+            {
+                 if( sum + ele > mid)
+                 {
+                    // you cannot add this ele in the subarray make a new one 
+                    // after adding it now the sum will become ele
+                    sum = ele;
+                    pieces++;
+                 }
+                 else{
+                    sum+=ele;
+                 }  
+            }     
+            if ( pieces > k)
+            {
+                start = mid+1;
+            }       
+            else
+            {
+                 end=mid;
+            }
+        }
+        return end;  // here start == end
+    }
+}
