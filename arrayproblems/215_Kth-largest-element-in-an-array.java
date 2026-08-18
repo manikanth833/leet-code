@@ -49,7 +49,8 @@ class Solution {
                 left = high + 1;
             }
 
-            // target is inside the == pivot section
+            // target is insid
+            e the == pivot section
             else {
                 return nums[target];
             }
